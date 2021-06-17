@@ -1,0 +1,124 @@
+@import "config";
+@import "util";
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+
+  .left {
+    flex: 0.55;
+    background-image: url("../images/bg-pattern-desktop.svg");
+    background-size: 100%;
+    &__container {
+      padding: 3rem 15rem 0rem 10rem;
+      height: 100%;
+
+      .form-container {
+        margin-top: 5rem;
+        .title {
+          font-size: $font-size-large;
+          letter-spacing: 16px;
+          font-family: $font-family;
+          font-weight: 600;
+          line-height: 1.2;
+          span {
+            font-weight: 300;
+            color: $desaturated-red;
+          }
+        }
+
+        .description {
+          @include basicText($desaturated-red);
+          margin-top: 2rem;
+        }
+
+        #email-form {
+          margin-top: 2rem;
+          width: 100%;
+          position: relative;
+          .form-group {
+            height: 3.5rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            border: 1px solid lightgray;
+            padding: 0.75rem 1.5rem;
+            border-radius: 3rem;
+            transition: border 500ms;
+            input {
+              @include basicText(#000);
+              flex: 0.75;
+              padding-right: 4px;
+              border: none;
+              outline: none;
+              &::placeholder {
+                @include basicText($desaturated-red);
+              }
+            }
+            &:focus-within {
+              border: 3px solid $soft-red;
+            }
+            #form-error {
+              visibility: hidden;
+              opacity: 0;
+              transition: visibility 0.3s linear, opacity 0.3s linear;
+            }
+          }
+          #form-submit {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 3.5rem;
+            align-self: stretch;
+            padding: 0.75rem 2.5rem;
+            border: none;
+            border-radius: 3rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            background: linear-gradient(
+              135deg,
+              #f8bfbf,
+              #f8bfbf,
+              #f8bfbf,
+              #ee8c8c
+            );
+            background-size: 400%;
+            background-position: right;
+            box-shadow: 0px 10px 20px #ac6565a3;
+            transition: background-position 500ms, box-shadow 500ms;
+            &:hover {
+              background-position: left;
+              box-shadow: 0px 10px 30px #ac6565a3;
+            }
+          }
+        }
+      }
+      .error {
+        @include basicText($desaturated-red);
+        padding-left: 1.5rem;
+        padding-top: 1rem;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.3s linear, opacity 0.3s linear;
+      }
+    }
+  }
+
+  .right {
+    flex: 0.45;
+    background-image: url("../images/hero-desktop.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@import "mobile";
